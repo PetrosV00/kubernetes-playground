@@ -1,17 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: vue-ingress
+  name: angular-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   rules:
   - host: "angular.myapp-devops.ip-ddns.com"
     http:
       paths:
-      - path: /
-        pathType: ImplementationSpecific
+      - path: /?(.*)
+        pathType: Prefix
         backend:
           service:
-            name: angular-svc
+            name: angular
             port:
               name: angular

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name:  spring
-        image: ghcr.io/petrosv00/devops-spring:0.3
+        image: ghcr.io/petrosv00/devops-spring:0.4
         livenessProbe:
           httpGet:
             path: "/actuator/health"
